@@ -7,6 +7,10 @@
 #
 # Author: Nick Van Haver <nvhaver@gmail.com>
 
+# References: 
+# http://blog.self.li/post/74294988486/creating-a-post-installation-script-for-ubuntu
+# https://github.com/snwh/ubuntu-post-install/blob/master/ubuntu-post-install-script.sh
+
 # Check if user has root privileges
 if [ "$EUID" -ne 0 ]; then 
   echo "Please run as root" 1>&2
@@ -46,6 +50,9 @@ ln -s /persist/Downloads/   Downloads
 ln -s /persist/Pictures/    Pictures
 ln -s /persist/Templates/   Templates
 ln -s /persist/Videos       Videos
+
+# Copy fonts
+cp ./fonts/* ~/.fonts 
 
 # Zsh setup
 chsh -s $(which zsh)

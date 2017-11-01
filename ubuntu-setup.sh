@@ -18,7 +18,7 @@ apt-get update
 apt-get dist upgrade -y
 
 # Install additional software
-apt-get -y build-essential install zsh wget vim git chromium-browser firefox vlc youtube-dl virtualbox virtualbox-guest-x11 htop deluge
+apt-get -y build-essential install zsh wget vim git chromium-browser firefox virtualbox virtualbox-guest-x11 htop deluge ubuntu-restricted-extras vlc youtube-dl
 
 # Java JDK
 #apt-get install oracle-java7-installer
@@ -30,4 +30,5 @@ apt-get install oracle-java9-installer
 #curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #apt-get install -y nodejs
 
-
+# Purge not needed software
+#apt-get purge 
