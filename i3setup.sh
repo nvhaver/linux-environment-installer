@@ -1,5 +1,7 @@
 #!/bin/bash
+#
 # i3 setup script
+#
 # Author: Nick Vam Haver <nvhaver@gmail.com>
 # Source: https://www.youtube.com/watch?v=j1I63wGcvU4
 
