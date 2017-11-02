@@ -40,7 +40,7 @@ esac
 
 # Symlinking home folders to persistent location
 cd /persist/
-mkdir Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/ Development/
+mkdir Desktop/ Downloads/ Pictures/ Videos/ Music/ Templates/ Documents/ Development/
 cd
 rm -rf Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/
 ln -s /persist/Desktop/     Desktop
@@ -53,6 +53,9 @@ ln -s /persist/Videos       Videos
 
 # Copy fonts
 cp ./fonts/* ~/.fonts
+
+# Copy password database
+#cp PDB_NVH_*.kdbx ~/Private
 
 # Zsh setup
 chsh -s $(which zsh)
