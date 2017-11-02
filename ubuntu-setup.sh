@@ -38,3 +38,5 @@ apt-get install -y oracle-java9-set-default
 
 # Purge not needed software
 #apt-get purge
+
+# TODO: Synergy, Keepass
