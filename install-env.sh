@@ -7,12 +7,12 @@
 #
 # Author: Nick Van Haver <nvhaver@gmail.com>
 
-# References: 
+# References:
 # http://blog.self.li/post/74294988486/creating-a-post-installation-script-for-ubuntu
 # https://github.com/snwh/ubuntu-post-install/blob/master/ubuntu-post-install-script.sh
 
 # Check if user has root privileges
-if [ "$EUID" -ne 0 ]; then 
+if [ "$EUID" -ne 0 ]; then
   echo "Please run as root" 1>&2
   exit 1
 fi
@@ -25,24 +25,24 @@ else
 fi
 
 # Prerequisites
-case $DISTRIB_ID in  
+case $DISTRIB_ID in
 Arch)
    pacman -S vim vlc firefox zsh wget
-   ;;  
+   ;;
 Ubuntu|Debian)
    ./ubuntu-setup.sh
    ;;
 *)
    echo "Could not detect distribution to install the prerequisite packages, aborting"
    exit
-   ;;  
+   ;;
 esac
 
 # Symlinking home folders to persistent location
 cd /persist/
 mkdir Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/ Development/
 cd
-rm -rf Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/ 
+rm -rf Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/
 ln -s /persist/Desktop/     Desktop
 ln -s /persist/Development/ Development
 ln -s /persist/Documents/   Documents
@@ -52,7 +52,7 @@ ln -s /persist/Templates/   Templates
 ln -s /persist/Videos       Videos
 
 # Copy fonts
-cp ./fonts/* ~/.fonts 
+cp ./fonts/* ~/.fonts
 
 # Zsh setup
 chsh -s $(which zsh)
