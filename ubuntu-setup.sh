@@ -38,3 +38,7 @@ apt-get install -y oracle-java9-set-default
 # NodeJs
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install -y nodejs
+
+# Python
+apt-get install python-pip
+

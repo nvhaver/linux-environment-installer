@@ -65,3 +65,5 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 # I3wm setup
 ./i3setup.sh
+
+./post-install-checks.sh
