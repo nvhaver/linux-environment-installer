@@ -6,7 +6,7 @@
 programs=(java node npm python3 pip vlc zsh i3wm)
 
 for program in ${programs[@]}; do
-    command $program
+    command -v $program >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo "$program was not installed successfully" 1>&2
     fi
