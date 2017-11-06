@@ -3,7 +3,7 @@
 # Post installation checks to verify all software is present
 
 # List of applications to check
-programs=(java node npm python3 pip vlc zsh i3wm)
+programs=(java nodejs npm python3 pip vlc zsh i3 vim)
 
 for program in ${programs[@]}; do
     command -v $program >/dev/null 2>&1
