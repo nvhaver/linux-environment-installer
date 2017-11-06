@@ -57,9 +57,14 @@ cp ./fonts/* ~/.fonts
 # Copy password database
 #cp PDB_NVH_*.kdbx ~/Private
 
+cd -
+
 # Zsh setup
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+# Set Zsh theme
+sed -ir 's/ZSH_THEME=".*"/ZSH_THEME="bira"/' .zshrc
 
 # Config file to be inserted
 

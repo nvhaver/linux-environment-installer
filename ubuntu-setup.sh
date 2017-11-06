@@ -20,7 +20,8 @@ apt-get -y purge account-plugin-facebook account-plugin-flickr aisleriot brltty 
 add-apt-repository -y ppa:webupd8team/java
 
 # Enable source code package repositories
-sed 's/# deb/deb/' -i /etc/apt/sources.list
+sed 's/# deb-s/deb-s/' -i /etc/apt/sources.list
+sed 's/# deb h/deb h/' -i /etc/apt/sources.list
 
 # Update system packages
 apt-get update
