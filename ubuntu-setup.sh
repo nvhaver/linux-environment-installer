@@ -13,33 +13,17 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Purge not needed software
-apt-get -y purge account-plugin-facebook account-plugin-flickr aisleriot brltty colord deja-dup evolution-data-server-online-accounts example-content gnome-accessibility-themes gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-writer libsane libsane-common python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common thunderbird thunderbird-gnome-support totem totem-common totem-plugins unity-scope-chromiumbookmarks unity-scope-colourlovers unity-scope-devhelp unity-scope-firefoxbookmarks unity-scope-gdrive unity-scope-manpages unity-scope-openclipart unity-scope-texdoc unity-scope-tomboy unity-scope-video-remote unity-scope-virtualbox unity-scope-yelp unity-scope-zotero unity-webapps-common
+. ./lib/ubuntu.sh
 
-# Add package repositories
-add-apt-repository -y ppa:webupd8team/java
+purge-bloat
+upgrade-system
 
-# Enable source code package repositories
-sed 's/# deb-s/deb-s/' -i /etc/apt/sources.list
-sed 's/# deb h/deb h/' -i /etc/apt/sources.list
+install-systools
+install-multimedia
+install-browsers
+install-coms
 
-# Update system packages
-apt-get update
-apt-get dist-upgrade -y
-
-# Install additional software
-apt-get -y install build-essential zsh wget vim git chromium-browser firefox virtualbox htop deluge ubuntu-restricted-extras vlc youtube-dl synergy keepass2 
-
-# Java JDK
-#apt-get install oracle-java7-installer
-#apt-get install oracle-java8-installer
-apt-get install -y oracle-java9-installer
-apt-get install -y oracle-java9-set-default
-
-# NodeJs
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install -y nodejs npm
-
-# Python
-apt-get install -y python-pip
-
+install-devtools
+install-java
+install-node
+install-python
