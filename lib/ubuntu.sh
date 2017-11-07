@@ -36,6 +36,7 @@ function install-browsers {
 # Install communication tools
 function install-coms {
     # Teamspeak
+    echo 'Install Teamspeak'
 }
 
 ## Installers Programming software
