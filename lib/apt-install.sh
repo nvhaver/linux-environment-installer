@@ -40,7 +40,8 @@ function upgrade-system {
 
 ## Installers Other software
 function install-systools {
-    apt-get install -y zsh htop wget virtualbox ubuntu-restricted-extras synergy keepass2 
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
+    apt-get install -y curl zsh htop wget virtualbox ubuntu-restricted-extras synergy keepass2 
 }
 
 function install-multimedia {
@@ -57,6 +58,8 @@ function install-devtools {
 }
 
 function install-java {
+    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
     #apt-get install oracle-java7-installer
     #apt-get install oracle-java8-installer
     apt-get install -y oracle-java9-installer

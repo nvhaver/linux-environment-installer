@@ -13,5 +13,5 @@ function run-install {
 }
 
 function install-i3 {
-    pacman -S i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
+    pacman -S curl i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
 }

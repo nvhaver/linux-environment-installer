@@ -48,3 +48,5 @@ mv Font-Awesome-4.5.0/fonts/fontawesome-webfont.ttf .fonts
 
 rm /tmp/awesome.zip
 rm -r Font-Awesome-4.5.0
+
+# TODO: copy config files
