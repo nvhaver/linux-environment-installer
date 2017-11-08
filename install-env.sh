@@ -40,6 +40,7 @@ install-zsh
 #install-node
 install-i3
 ./lib/i3setup.sh
+install-coms
 set-folder-links
 
 post-install-checks
