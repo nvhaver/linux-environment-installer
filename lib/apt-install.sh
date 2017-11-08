@@ -1,6 +1,24 @@
 #!/bin/bash
 #
-# Ubuntu installation functions
+#  Apt installation functions
+#
+# Prerequisites:
+# Fresh installed Ubuntu Linux with separate partition called persist
+#
+# Author: Nick Van Haver <nvhaver@gmail.com>
+
+function run-install {
+    purge-bloat
+    upgrade-system
+    install-systools
+    install-multimedia
+    install-browsers
+    install-devtools
+    install-java
+    install-node
+    install-python
+    install-i3
+}
 
 # Purge bloatware
 function purge-bloat {
@@ -33,20 +51,11 @@ function install-browsers {
     apt-get install -y chromium-browser firefox
 }
 
-# Install communication tools
-function install-coms {
-    # Teamspeak
-    echo 'Install Teamspeak'
-}
-
 ## Installers Programming software
-
-# General dev tools
 function install-devtools {
     apt-get install -y build-essential git vim
 }
 
-# Java JDK
 function install-java {
     #apt-get install oracle-java7-installer
     #apt-get install oracle-java8-installer
@@ -54,13 +63,14 @@ function install-java {
     apt-get install -y oracle-java9-set-default
 }
 
-# NodeJs
-function install-node {
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+function install-npm {
     apt-get install -y nodejs npm 
 }
 
-# Python
 function install-python {
     apt-get install -y python-pip
+}
+
+function install-i3 {
+    apt-get install i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
 }

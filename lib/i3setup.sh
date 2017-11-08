@@ -1,36 +1,9 @@
 #!/bin/bash
 #
-# i3 setup script
+# i3 config script
 #
 # Author: Nick Vam Haver <nvhaver@gmail.com>
 # Source: https://www.youtube.com/watch?v=j1I63wGcvU4
-
-# 0. Check if user has root privileges
-if [ "$EUID" -ne 0 ]; then 
-  echo "Please run as root" 1>&2
-  exit 1
-fi
-
-# Get distro variables
-if [ -f "/etc/arch-release" ]; then
-  DISTRIB_ID="Arch"
-else
-  . /etc/lsb-release
-fi
-
-# Prerequisites
-case $DISTRIB_ID in
-Ubuntu|Debian)
-   apt-get install i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
-   ;;
-Arch)
-   pacman -S i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
-   ;;
-*)
-   echo "Could not detect distribution to install the prerequisite packages, aborting"
-   exit
-   ;;
-esac
 
 # Generate basic config
 i3-config-wizard
@@ -75,4 +48,3 @@ mv Font-Awesome-4.5.0/fonts/fontawesome-webfont.ttf .fonts
 
 rm /tmp/awesome.zip
 rm -r Font-Awesome-4.5.0
-echo "i3wm setup complete"

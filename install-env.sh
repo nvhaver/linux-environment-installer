@@ -11,11 +11,9 @@
 # http://blog.self.li/post/74294988486/creating-a-post-installation-script-for-ubuntu
 # https://github.com/snwh/ubuntu-post-install/blob/master/ubuntu-post-install-script.sh
 
-# Check if user has root privileges
-if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root" 1>&2
-  exit 1
-fi
+. ./lib/generic.sh
+
+sudo-check
 
 # Get distro variables
 if [ -f "/etc/arch-release" ]; then
@@ -24,51 +22,23 @@ else
   . /etc/lsb-release
 fi
 
-# Prerequisites
 case $DISTRIB_ID in
 Arch)
-   pacman -S vim vlc firefox zsh wget
+   . ./lib/pacman-install.sh
    ;;
 Ubuntu|Debian)
-   ./ubuntu-setup.sh
+   . ./lib/apt-install.sh
    ;;
 *)
-   echo "Could not detect distribution to install the prerequisite packages, aborting"
-   exit
+   echo "The detected distribution ("$DISTRIB_ID") is not supported, aborting"
+   exit 1
    ;;
 esac
 
-# Symlinking home folders to persistent location
-cd /persist/
-mkdir Desktop/ Downloads/ Pictures/ Videos/ Music/ Templates/ Documents/ Development/
-cd
-rm -rf Desktop/ Downloads/ Pictures/ Videos/ Public/ Music/ Templates/ Documents/
-ln -s /persist/Desktop/     Desktop
-ln -s /persist/Development/ Development
-ln -s /persist/Documents/   Documents
-ln -s /persist/Downloads/   Downloads
-ln -s /persist/Pictures/    Pictures
-ln -s /persist/Templates/   Templates
-ln -s /persist/Videos       Videos
+run-install
+install-zsh
+#install-node
+install-i3
+set-folder-links
 
-# Copy fonts
-cp ./fonts/* ~/.fonts
-
-# Copy password database
-#cp PDB_NVH_*.kdbx ~/Private
-
-cd -
-
-# Zsh setup
-chsh -s $(which zsh)
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-
-# Set Zsh theme
-sed -ir 's/ZSH_THEME=".*"/ZSH_THEME="bira"/' .zshrc
-
-# Config file to be inserted
-
-# I3wm setup
-./i3setup.sh
-
-./post-install-checks.sh
+post-install-checks
