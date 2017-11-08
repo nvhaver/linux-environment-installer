@@ -39,6 +39,7 @@ run-install
 install-zsh
 #install-node
 install-i3
+./i3setup.sh
 set-folder-links
 
 post-install-checks

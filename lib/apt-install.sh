@@ -72,5 +72,5 @@ function install-python {
 }
 
 function install-i3 {
-    apt-get install i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
+    apt-get install -y i3 i3blocks lxappearance thunar gnome-icon-theme-full fonts-font-awesome
 }

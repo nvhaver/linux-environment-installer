@@ -59,7 +59,7 @@ function install-node {
 
 function install-zsh {
     # Zsh setup
-    chsh -s $(which zsh)
+    #chsh -s $(which zsh)
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
     # Set Zsh theme
