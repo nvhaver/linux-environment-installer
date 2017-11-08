@@ -42,14 +42,14 @@ function install-coms {
     # Teamspeak
     cd /opt
     # Get latest version
-    curl -sL http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
+    wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
     chmod u+x TeamSpeak3-Client-linux_amd64-3.1.6.run
     # Run installer
     ./TeamSpeak3-Client-linux_amd64-3.1.6.run
     # cleanup
     rm TeamSpeak3-Client-linux_amd64-3.1.6.run
     cd -
-    #ln -S /opt/TeamSpeak3-Client-linux_amd64-3.1.6/ /usr/bin/teamspeak3
+    ln -S /opt/TeamSpeak3-Client-linux_amd64-3.1.6/ /usr/bin/teamspeak3
 }
 
 # NodeJs
