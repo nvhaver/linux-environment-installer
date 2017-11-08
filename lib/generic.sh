@@ -58,12 +58,34 @@ function install-node {
 }
 
 function install-zsh {
-    # Zsh setup
-    #chsh -s $(which zsh)
-    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    if [ ! -n "$ZSH" ]; then
+        ZSH=~/.oh-my-zsh
+    fi
+
+    if [ -d "$ZSH" ]; then
+        printf "You already have Oh My Zsh installed.\n"
+        printf "You'll need to remove $ZSH if you want to re-install.\n"
+        return
+    fi
+
+    umask g-w,o-w
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+    
+    if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+        printf "Found ~/.zshrc. Backing up to ~/.zshrc.pre-oh-my-zsh\n";
+        mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
+    fi
+
+    printf "Using the Oh My Zsh template file and adding it to ~/.zshrc\n"
+    cp $ZSH/templates/zshrc.zsh-template ~/.zshrc
+    sed "/^export ZSH=/ c\\
+    export ZSH=$ZSH
+    " ~/.zshrc > ~/.zshrc-omztemp
+    mv -f ~/.zshrc-omztemp ~/.zshrc
+    chsh -s $(which zsh)
 
     # Set Zsh theme
-    sed -ir 's/ZSH_THEME=".*"/ZSH_THEME="bira"/' .zshrc
+    sed -ir 's/ZSH_THEME=".*"/ZSH_THEME="bira"/' ~/.zshrc
 }
 
 function install-i3 {
