@@ -6,3 +6,8 @@ At this time the scripts is oriented towards Ubuntu/Debian derivatives. Later th
 ## List of installed software:
 
 TBD
+
+## Todo's
+
+- Add various configuration files and operations
+- Harden the system after installation
