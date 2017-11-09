@@ -42,6 +42,7 @@ function upgrade-system {
 function install-systools {
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
     apt-get install -y curl zsh htop wget virtualbox ubuntu-restricted-extras synergy keepass2 
+#wireshark mono tor apache2 nginx mysql php libapache2-mod-php php-mcrypt php-mysql php-cli php-fpm ntfs-3g gimp ffmpeg espeak
 }
 
 function install-multimedia {

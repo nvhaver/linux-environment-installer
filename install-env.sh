@@ -37,7 +37,6 @@ esac
 
 run-install
 install-zsh
-#install-node
 install-i3
 ./lib/i3setup.sh
 install-coms

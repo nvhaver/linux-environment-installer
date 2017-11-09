@@ -52,11 +52,6 @@ function install-coms {
     ln -S /opt/TeamSpeak3-Client-linux_amd64-3.1.6/ /usr/bin/teamspeak3
 }
 
-# NodeJs
-function install-node {
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-}
-
 function install-zsh {
     if [ ! -n "$ZSH" ]; then
         ZSH=~/.oh-my-zsh
